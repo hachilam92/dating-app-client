@@ -3,7 +3,7 @@
     <a class="navbar-brand" href="#">Dating App</a>
     <ul
       class="navbar-nav me-auto mb-2 mb-md-0"
-      *ngIf="loggedin"
+      *ngIf="loggedIn"
       >
       <li class="nav-item">
         <a class="nav-link" href="#">Matches</a>
@@ -21,7 +21,7 @@
 
     <div
       class="dropdown"
-      *ngIf="loggedin"
+      *ngIf="loggedIn"
       dropdown>
       <a
         dropdownToggle
@@ -40,7 +40,7 @@
       class="d-flex"
       (ngSubmit)="login()"
       autocomplete="off"
-      *ngIf="!loggedin">
+      *ngIf="!loggedIn">
       <input
         name="username"
         [(ngModel)]="model.username"
