@@ -31,11 +31,11 @@
     </ul>
 
     <div class="dropdown" dropdown>
-      <ng-container *ngIf="currentUser$ | async">
+      <ng-container *ngIf="(currentUser$ | async) as user">
         <a
           dropdownToggle
           class="dropdown-toggle text-light">
-          Welcome User
+          Welcome {{user.userName | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item">Edit Profile</a>
@@ -64,7 +64,7 @@
           class="form-control me-2"
           type="password"
           placeholder="Password">
-        <button class="btn btn-outline-success" type="submit">Login</button>
+        <button class="btn btn-success" type="submit">Login</button>
       </ng-container>
     </form>
   </div>
