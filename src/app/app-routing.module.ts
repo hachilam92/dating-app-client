@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'members', component: MemberListComponent},
   {path: 'members/:id', component: MemberDetailComponent},
   {path: 'lists', component: ListsComponent},
-  {path: 'Messages', component: MessagesComponent},
+  {path: 'messages', component: MessagesComponent},
   {path: '**', component: HomeComponent, pathMatch: 'full'},
 ];
 
