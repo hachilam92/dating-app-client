@@ -1,5 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Member } from '../_models/member';
 
@@ -11,11 +12,15 @@ export class MembersService {
 
   constructor(private http: HttpClient) { }
 
-  getMembers() {
-    return this.http.get<Member[]>(this.baseUrl + 'users')
+  getMembers(): Observable<Member[]> {
+    return this.http.get<Member[]>(this.baseUrl + 'users');
   }
 
-  getMember(username: string) {
-    return this.http.get<Member>(this.baseUrl + 'users/' + username)
+  getMember(username: string): Observable<Member> {
+    return this.http.get<Member>(this.baseUrl + 'users/' + username);
+  }
+
+  updateMember(member: Member): Observable<object> {
+    return this.http.put(this.baseUrl + 'users', member);
   }
 }
