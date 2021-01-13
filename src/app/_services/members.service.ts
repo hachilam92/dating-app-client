@@ -8,7 +8,7 @@ import { Member } from '../_models/member';
 @Injectable({
   providedIn: 'root'
 })
-export class MembersService {
+export class MemberService {
   baseUrl = environment.apiUrl;
   members: Member[] = [];
 
@@ -39,5 +39,9 @@ export class MembersService {
         this.members[index] = member;
       })
     );
+  }
+
+  setMainPhoto(photoId: number): Observable<object> {
+    return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
 }
