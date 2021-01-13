@@ -44,4 +44,8 @@ export class MemberService {
   setMainPhoto(photoId: number): Observable<object> {
     return this.http.put(this.baseUrl + 'users/set-main-photo/' + photoId, {});
   }
+
+  deletePhoto(photoId: number): Observable<object> {
+    return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
+  }
 }
