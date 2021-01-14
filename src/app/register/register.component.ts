@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
 
   model: any = {};
   registerForm: FormGroup;
+  maxDate: Date;
 
   constructor(
     private accountService: AccountService,
@@ -23,11 +24,18 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.initializeForm();
+    this.maxDate = new Date();
+    this.maxDate.setFullYear(this.maxDate.getFullYear() - 18);
   }
 
   initializeForm(): void {
     this.registerForm = this.formBuilder.group({
+      gender: ['male'],
       username: ['', Validators.required],
+      knownAs: ['', Validators.required],
+      dateOfBirth: ['', Validators.required],
+      city: ['', Validators.required],
+      country: ['', Validators.required],
       password: ['', [
         Validators.required,
         Validators.minLength(4),
