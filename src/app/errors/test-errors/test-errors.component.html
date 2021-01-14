@@ -15,7 +15,7 @@
     Test 500 Error
   </button>
 
-  <div class="row mt-4" *ngIf="validationError && validationError.length > 0">
+  <div class="row mt-5" *ngIf="validationError && validationError.length > 0">
     <ul class="text-danger">
       <li *ngFor="let error of validationError">
         {{error}}

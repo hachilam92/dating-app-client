@@ -39,7 +39,7 @@
 
     <div class="dropdown" dropdown>
       <ng-container *ngIf="(currentUser$ | async) as user">
-        <img src="{{user.photoUrl}}" alt="{{user.userName}}">
+        <img src="{{user.photoUrl || './assets/user.png'}}" alt="{{user.userName}}">
         <a
           dropdownToggle
           class="dropdown-toggle text-light ml-2">
