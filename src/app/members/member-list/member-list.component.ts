@@ -1,6 +1,4 @@
-import { ThrowStmt } from '@angular/compiler';
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { take } from 'rxjs/operators';
 import { Member } from 'src/app/_models/member';
 import { Pagination } from 'src/app/_models/pagination';
@@ -19,6 +17,10 @@ export class MemberListComponent implements OnInit {
   pagination: Pagination;
   userParams: UserParams;
   user: User;
+  genderList = [
+    { value: 'male', display: 'Males' },
+    { value: 'female', display: 'Females' },
+  ];
 
   constructor(
     private memberService: MemberService,
@@ -39,6 +41,11 @@ export class MemberListComponent implements OnInit {
       this.members = response.result;
       this.pagination = response.pagination;
     });
+  }
+
+  resetFilters(): void {
+    this.userParams = new UserParams(this.user);
+    this.loadMembers();
   }
 
   pageChanged(event: any): void {
