@@ -33,11 +33,11 @@ export class MemberService {
     return this.userParams;
   }
 
-  setUserParams(params: UserParams) {
+  setUserParams(params: UserParams): void {
     this.userParams = params;
   }
 
-  resetUserParams() {
+  resetUserParams(): UserParams {
     this.userParams = new UserParams(this.user);
     return this.userParams;
   }
@@ -68,7 +68,7 @@ export class MemberService {
   }
 
   getMembers(userParams: UserParams): Observable<PaginatedResult<Member[]>> {
-    var response = this.memberCache.get(Object.values(userParams).join('-'));
+    const response = this.memberCache.get(Object.values(userParams).join('-'));
     if (response) {
       return of(response);
     }
@@ -81,8 +81,8 @@ export class MemberService {
     params = params.append('orderBy', userParams.orderBy);
 
     return this.getPaginatedResult<Member[]>(this.baseUrl + 'users', params).pipe(
-      map(response => {
-        this.memberCache.set(Object.values(userParams).join('-'), response);
+      map(res => {
+        this.memberCache.set(Object.values(userParams).join('-'), res);
         return response;
       })
     );
@@ -92,7 +92,7 @@ export class MemberService {
   getMember(username: string): Observable<Member> {
     const member = [...this.memberCache.values()]
       .reduce((arr, elem) => arr.concat(elem.result), [])
-      .find((member: Member) => member.userName === username);
+      .find((elem: Member) => elem.userName === username);
 
     if (member) {
       return of(member);
@@ -118,15 +118,15 @@ export class MemberService {
     return this.http.delete(this.baseUrl + 'users/delete-photo/' + photoId);
   }
 
-  addLike(username: string) {
-    return this.http.post(this.baseUrl + 'likes/' + username, {})
+  addLike(username: string): Observable<object> {
+    return this.http.post(this.baseUrl + 'likes/' + username, {});
   }
 
   getLikes(
     predicate: string,
     pageNumber: number,
     pageSize: number,
-  ) {
+  ): Observable<object> {
     let params = this.getPaginationHeaders(pageNumber, pageSize);
     params = params.append('predicate', predicate);
 
