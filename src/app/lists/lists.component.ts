@@ -21,7 +21,7 @@ export class ListsComponent implements OnInit {
     this.loadLikes();
   }
 
-  loadLikes() {
+  loadLikes(): void {
     this.memberService
       .getLikes(
         this.predicate,
@@ -34,7 +34,7 @@ export class ListsComponent implements OnInit {
       });
   }
 
-  pageChanged(event: any) {
+  pageChanged(event: any): void {
     this.pageNumber = event.page;
     this.loadLikes();
   }

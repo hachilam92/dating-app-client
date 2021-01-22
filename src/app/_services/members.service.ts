@@ -126,7 +126,7 @@ export class MemberService {
     predicate: string,
     pageNumber: number,
     pageSize: number,
-  ): Observable<object> {
+  ): Observable<PaginatedResult<Member[]>> {
     let params = this.getPaginationHeaders(pageNumber, pageSize);
     params = params.append('predicate', predicate);
 
