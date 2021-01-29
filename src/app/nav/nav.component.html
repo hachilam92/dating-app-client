@@ -56,7 +56,7 @@
         <a
           dropdownToggle
           class="dropdown-toggle text-light ml-2">
-          Welcome {{user.knownAs | titlecase}}
+          Welcome {{user.knownAs || user.userName | titlecase}}
         </a>
         <div class="dropdown-menu mt-3" *dropdownMenu>
           <a class="dropdown-item" (click)="editProfile()">Edit Profile</a>
