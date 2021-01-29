@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { timeStamp } from 'console';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { RolesModalComponent } from 'src/app/modals/roles-modal/roles-modal.component';
 import { User } from 'src/app/_models/user';
